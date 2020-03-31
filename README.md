@@ -1,6 +1,6 @@
 # soldev-jenkins-server 
 
-![diagram](https://user-images.githubusercontent.com/6440106/77997908-11cdd200-72e5-11ea-91c1-cc54853acc95.png)
+![diagram](https://user-images.githubusercontent.com/6440106/77998697-57d76580-72e6-11ea-8ced-be0770b517e1.png)
 
 ### Setup with NGINX using a Self Signed Issuer and Certs
 Look [here](nginx-self/README.md).
