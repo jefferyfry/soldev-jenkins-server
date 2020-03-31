@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: soldev-ci-jfrog-team
+  namespace: soldev-jenkins
+spec:
+  secretName: soldev-ci-jfrog-team-tls
+  issuerRef:
+    name: letsencrypt-staging
+  commonName: soldev-ci.jfrog.team
+  dnsNames:
+    - soldev-ci.jfrog.team

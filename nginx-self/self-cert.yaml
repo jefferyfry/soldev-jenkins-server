@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: soldev-ci-104-197-237-136-xip-io
+  namespace: soldev-jenkins
+spec:
+  secretName: soldev-ci-104-197-237-136-xip-io-tls
+  issuerRef:
+    name: selfsigned-issuer
+  commonName: soldev-ci.104.197.237.136.xip.io
+  dnsNames:
+    - soldev-ci.104.197.237.136.xip.io
