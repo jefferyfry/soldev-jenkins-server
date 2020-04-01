@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: jenkins-openshiftk8s-com
+  namespace: soldev-jenkins
+spec:
+  secretName: jenkins-openshiftk8s-com-tls
+  issuerRef:
+    name: letsencrypt-prod
+  commonName: jenkins.openshiftk8s.com
+  dnsNames:
+    - jenkins.openshiftk8s.com

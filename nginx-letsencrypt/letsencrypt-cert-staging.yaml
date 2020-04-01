@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: soldev-ci-jfrog-team
+  name: jenkins-openshiftk8s-com
   namespace: soldev-jenkins
 spec:
-  secretName: soldev-ci-jfrog-team-tls
+  secretName: jenkins-openshiftk8s-com-tls
   issuerRef:
     name: letsencrypt-staging
-  commonName: soldev-ci.jfrog.team
+  commonName: jenkins.openshiftk8s.com
   dnsNames:
-    - soldev-ci.jfrog.team
+    - jenkins.openshiftk8s.com

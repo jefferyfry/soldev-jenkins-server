@@ -109,9 +109,11 @@ kubectl create secret generic clouddns-dns01-solver-svc-acct \
 ```
 
 ### Set Up the Let's Encrypt Issuer
-1. Updated the letsencrypt-cluster-issuer.yaml with your email address.
+For the following, use the stagine issuer and cert to test your configuration first. Then when ready use the same steps for the production issuer and certs.
 
-2. Apply the cluster issuer.
+1. Updated the letsencrypt-issuer.yaml with your email address.
+
+2. Apply the issuer.
 
 ```
 kubectl apply -f letsencrypt-issuer.yaml -n soldev-jenkins
@@ -164,4 +166,10 @@ or
 
 ```
 helm install --set master.hostName=$HOSTNAME --set master.adminUser=admin --set master.adminPassword=p@ssw0rd! -f soldev-jenkins-helm-config.yaml soldev-jenkins stable/jenkins --dry-run > dryrun.txt
+```
+
+To delete, use helm delete.
+
+```
+helm delete soldev-jenkins -n soldev-jenkins
 ```
