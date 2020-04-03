@@ -4,7 +4,7 @@ metadata:
   name: jenkins-openshiftk8s-com
   namespace: soldev-jenkins
 spec:
-  secretName: jenkins-openshiftk8s-com-tls
+  secretName: jenkins-openshiftk8s-com-staging-tls
   issuerRef:
     name: letsencrypt-staging
   commonName: jenkins.openshiftk8s.com

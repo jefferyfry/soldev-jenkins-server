@@ -12,11 +12,12 @@ master:
     path: "/"
     hostName: jenkins.openshiftk8s.com
     annotations: {kubernetes.io/ingress.class: "nginx",
-                  cert-manager.io/issuer: "letsencrypt-staging"}
+                  cert-manager.io/issuer: "letsencrypt-prod",
+                  nginx.ingress.kubernetes.io/force-ssl-redirect: "true"}
     tls:
       - hosts:
         - jenkins.openshiftk8s.com
-        secretName: jenkins-openshiftk8s-com-tls
+        secretName: jenkins-openshiftk8s-com-prod-tls
   installPlugins:
     - kubernetes:1.24.1
     - workflow-job:2.36
@@ -24,3 +25,5 @@ master:
     - credentials-binding:1.21
     - git:4.2.0
     - artifactory:3.6.1
+    - blueocean:1.22.0
+    - build-monitor-plugin:1.12+build.201809061734

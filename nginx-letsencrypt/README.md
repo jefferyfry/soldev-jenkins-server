@@ -6,10 +6,10 @@
 gcloud beta container clusters create soldev-jenkins \
     --zone us-central1-c \
     --release-channel regular \
-    --machine-type=n1-standard-1 \
+    --machine-type=n1-standard-4 \
     --enable-autoscaling \
     --min-nodes=1 \
-    --max-nodes=5
+    --max-nodes=9
 ```
 
 ## Install NGINX K8s Controller
@@ -90,26 +90,9 @@ cert-manager-6b5d76bf77-hgb9f              1/1     Running   0          101m
 cert-manager-cainjector-7c5667645b-qhjvv   1/1     Running   0          101m
 cert-manager-webhook-59846cdfb6-xncff      1/1     Running   1          101m
 ```
-### Set Up the DNS Service Account for DNS01 Challenges
-
-```
-export PROJECT_ID=<project id>
-
-gcloud iam service-accounts create dns01-solver --display-name "dns01-solver"
-
-gcloud projects add-iam-policy-binding $PROJECT_ID \
-   --member serviceAccount:dns01-solver@$PROJECT_ID.iam.gserviceaccount.com \
-   --role roles/dns.admin
-
-gcloud iam service-accounts keys create key.json \
-   --iam-account dns01-solver@$PROJECT_ID.iam.gserviceaccount.com
-
-kubectl create secret generic clouddns-dns01-solver-svc-acct \
-   --from-file=key.json -n soldev-jenkins
-```
 
 ### Set Up the Let's Encrypt Issuer
-For the following, use the stagine issuer and cert to test your configuration first. Then when ready use the same steps for the production issuer and certs.
+For the following, use the staging issuer and cert to test your configuration first. Then when ready use the same steps for the production issuer and certs.
 
 1. Updated the letsencrypt-issuer.yaml with your email address.
 
@@ -127,7 +110,7 @@ kubectl get issuer -n soldev-jenkins
 kubectl describe issuer -n soldev-jenkins
 ```
 
-4. Update self-cert.yaml with the correct host and common name.
+4. Update letsencrypt-cert.yaml with the correct host and common name.
 
 5. Apply certificate.
 
